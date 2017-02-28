@@ -10,8 +10,6 @@
     </div>
     <div class="navbar-collapse collapse navbar-material-light-blue-collapse">
       <ul class="nav navbar-nav navbar-right">
-
-        <li *ngIf="loginComponent.userIsLoggedIn() === false"><a routerLink="/login">Login</a></li>
         <li *ngIf="loginComponent.userIsLoggedIn() === true"><a routerLink="/logout">Logout</a></li>
       </ul>
     </div>
@@ -19,3 +17,26 @@
 </div>
 
 <router-outlet></router-outlet>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>Todo It</h1>
+          <h3>Join the Todo revolution</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non tempor urna. Sed sit amet lacinia nibh, nec rutrum erat. Nunc laoreet venenatis nibh, vitae laoreet nisl sollicitudin eget. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vel suscipit velit.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-body"><!-- Need some logic here to either show login or register-->
+          <h3>{{ loginComponent.title }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
