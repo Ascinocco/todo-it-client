@@ -10,7 +10,9 @@
     </div>
     <div class="navbar-collapse collapse navbar-material-light-blue-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/login">Login</a></li>
+
+        <li *ngIf="loginComponent.userIsLoggedIn() === false"><a routerLink="/login">Login</a></li>
+        <li *ngIf="loginComponent.userIsLoggedIn() === true"><a routerLink="/logout">Logout</a></li>
       </ul>
     </div>
   </div>

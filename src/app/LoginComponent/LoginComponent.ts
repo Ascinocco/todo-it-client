@@ -11,5 +11,16 @@ export class LoginComponent
 {
   constructor()
   {
+
+  }
+
+  public userIsLoggedIn(): boolean
+  {
+    // if logged logged in 
+      // return true
+    // else 
+      // return false
+
+    return false;
   }
 }
