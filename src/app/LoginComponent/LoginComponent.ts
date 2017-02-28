@@ -9,15 +9,30 @@ import { User } from '../Models/User';
 
 export class LoginComponent
 {
-  public title: string;
   public email: string;
   public password: string;
+  public showLogin: boolean;
 
   constructor()
   {
-    this.title = "Login";
     this.email = "";
     this.password = "";
+    this.showLogin = true;
+  }
+
+  public login()
+  {
+    let user = new User(this.email, this.password);
+    user.login();
+    this.clearLoginForm();
+
+  }
+
+  public clearLoginForm()
+  {
+    this.email = "";
+    this.password = "";
+    this.showLogin = false;
   }
 
   public userIsLoggedIn(): boolean
