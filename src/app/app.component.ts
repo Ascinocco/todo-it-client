@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from './LoginComponent/LoginComponent';
 import { RegisterComponent } from './RegisterComponent/RegisterComponent';
+// import { User } from './Models/User';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent
 {
   public loginComponent: LoginComponent;
   public registerComponent: RegisterComponent;
+  // public user: User;
 
   constructor(LoginComponent: LoginComponent, RegisterComponent: RegisterComponent)
   {
