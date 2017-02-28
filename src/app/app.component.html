@@ -37,9 +37,9 @@
 
           <div class="row"><!-- switch between login and register buttons-->
             <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-              <button class="btn btn-default active" (click)="loginComponent.showLogin = true;">LOGIN</button>
+              <button class="btn btn-default" (click)="loginComponent.showLogin = true; registerComponent.showRegistration = false;">LOGIN</button>
               <!-- Register component would equal false here -->
-              <button class="btn btn-default" (click)="loginComponent.showLogin = false;">REGISTER</button>
+              <button class="btn btn-default" (click)="loginComponent.showLogin = false; registerComponent.showRegistration = true;">REGISTER</button>
             </div>
           </div>
 
@@ -53,10 +53,11 @@
             </div>
           </div> <!-- end login form-->
 
-          <div class="row" *ngIf="">
+          <div class="row" *ngIf="registerComponent.showRegistration">
             <div class="col-sm-12 col-md-12 col-lg-12">
-              <input id="email" name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="loginComponent.email">
-              <input id="password" name="password" type="password" class="form-control" placeholder="Password" [(ngModel)]="loginComponent.password">
+              <input id="email" name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="registerComponent.email">
+              <input id="password" name="password" type="password" class="form-control" placeholder="Password" [(ngModel)]="registerComponent.password">
+              <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="registerComponent.confirmPassword">
               <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8">
                 <button type="button" class="btn btn-default">REGISTER</button>
               </div>

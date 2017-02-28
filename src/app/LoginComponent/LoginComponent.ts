@@ -20,15 +20,19 @@ export class LoginComponent
     this.showLogin = true;
   }
 
-  public login()
+  // this should return a user object
+  // not 100% sure how this is going to play out
+  // this is my basic stub for now
+  public login(): User
   {
     let user = new User(this.email, this.password);
     user.login();
     this.clearLoginForm();
 
+    return user;
   }
 
-  public clearLoginForm()
+  public clearLoginForm(): void
   {
     this.email = "";
     this.password = "";
