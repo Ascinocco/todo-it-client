@@ -1,23 +1,35 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginComponent } from './LoginComponent/LoginComponent';
 import { RegisterComponent } from './RegisterComponent/RegisterComponent';
+import { DashboardComponent } from './DashboardComponent/DashboardComponent';
+import { LandingComponent } from './LandingComponent/LandingComponent';
 // import { User } from './Models/User';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [LoginComponent, RegisterComponent]
+  providers: [LoginComponent, RegisterComponent, DashboardComponent, LandingComponent]
 })
 export class AppComponent
 {
   public loginComponent: LoginComponent;
   public registerComponent: RegisterComponent;
+  public dashboardComponent: DashboardComponent;
+  public landingComponent: LandingComponent;
+  public router: Router;
   // public user: User;
 
-  constructor(LoginComponent: LoginComponent, RegisterComponent: RegisterComponent)
+  constructor(LoginComponent: LoginComponent, RegisterComponent: RegisterComponent,
+              DashboardComponent: DashboardComponent, LandingComponent: LandingComponent,
+              router: Router)
   {
     this.loginComponent = LoginComponent;
     this.registerComponent = RegisterComponent;
+    this.dashboardComponent = DashboardComponent;
+    this.landingComponent = LandingComponent;
+    this.router = router;
+    this.router.navigate(['landing'])
   }
 }

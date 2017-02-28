@@ -1,9 +1,15 @@
-<div class="row" *ngIf="loginComponent.showLogin"> <!-- Login Form-->
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <input id="email" name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="loginComponent.email">
-        <input id="password" name="password" type="password" class="form-control" placeholder="Password" [(ngModel)]="loginComponent.password">
-        <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8">
-            <button type="button" class="btn btn-default" (click)="loginComponent.login()">LOGIN</button>
+<div class="col-md-4 col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row"> <!-- Login Form-->
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <input id="email" name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="email">
+          <input id="password" name="password" type="password" class="form-control" placeholder="Password" [(ngModel)]="password">
+          <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8">
+            <button type="button" class="btn btn-default" (click)="login()">LOGIN</button>
+          </div>
         </div>
+      </div> <!-- end login form-->
     </div>
-</div> <!-- end login form-->
+  </div>
+</div>

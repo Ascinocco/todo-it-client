@@ -8,8 +8,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './LoginComponent/LoginComponent';
 import { RegisterComponent } from './RegisterComponent/RegisterComponent';
 import { DashboardComponent } from './DashboardComponent/DashboardComponent';
+import { LandingComponent } from './LandingComponent/LandingComponent';
 
 const routes: Routes = [
+  { path: 'landing', component: LandingComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent }
 ];
 
@@ -18,7 +22,8 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
