@@ -33,9 +33,29 @@
     </div>
     <div class="col-md-4 col-lg-4">
       <div class="panel panel-default">
-        <div class="panel-body"><!-- Need some logic here to either show login or register-->
-          <h3>{{ loginComponent.title }}</h3>
-        </div>
+    
+        
+        
+
+
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+              <button class="btn btn-default active" (click)="loginComponent.showLogin = true;">LOGIN</button>
+              <!-- Register component would equal false here -->
+              <button class="btn btn-default">REGISTER</button>
+            </div>
+          </div>
+          <div class="row"> <!-- Need some logic here to either show login or register-->
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <input id="email" name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="loginComponent.email">
+              <input id="password" name="password" type="password" class="form-control" placeholder="Password" [(ngModel)]="loginComponent.password">
+              <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8">
+                <button type="button" class="btn btn-default">Login</button>
+              </div>
+            </div>
+          </div>
+        </div><!-- panel body -->
       </div>
     </div>
   </div>
