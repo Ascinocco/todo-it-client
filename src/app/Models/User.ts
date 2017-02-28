@@ -62,7 +62,9 @@ export class User
   /** authenticate methods **/
   public login(): void
   {
-
+    console.log(this.email);
+    console.log(this.password);
+    
   }
 
   public logout(): void

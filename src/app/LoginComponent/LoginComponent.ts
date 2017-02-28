@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../Models/User';
 
 @Component({
@@ -12,23 +13,25 @@ export class LoginComponent
   public email: string;
   public password: string;
   public showLogin: boolean;
+  private router: Router;
 
-  constructor()
+  constructor(router: Router)
   {
     this.email = "";
     this.password = "";
     this.showLogin = true;
+    this.router = router;
   }
 
   // this should return a user object
   // not 100% sure how this is going to play out
   // this is my basic stub for now
-  public login(): User
+  public login()
   {
     let user = new User(this.email, this.password);
     user.login();
     this.clearLoginForm();
-
+    this.router.navigate(['dashboard']);
     return user;
   }
 
