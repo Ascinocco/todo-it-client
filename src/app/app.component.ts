@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginComponent } from './LoginComponent/LoginComponent';
-import { RegisterComponent } from './RegisterComponent/RegisterComponent';
-import { DashboardComponent } from './DashboardComponent/DashboardComponent';
-import { LandingComponent } from './LandingComponent/LandingComponent';
+import { LoginComponent } from './Components/LoginComponent/LoginComponent';
+import { RegisterComponent } from './Components/RegisterComponent/RegisterComponent';
+import { DashboardComponent } from './Components/DashboardComponent/DashboardComponent';
+import { LandingComponent } from './Components/LandingComponent/LandingComponent';
 // import { User } from './Models/User';
 
 @Component({
