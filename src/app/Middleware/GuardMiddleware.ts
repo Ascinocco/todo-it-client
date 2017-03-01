@@ -11,6 +11,14 @@ export class GuardMiddleware implements CanActivate
         this.router = router;
     }
 
+    /**
+     * Determines if a user can use a route 
+     * TODO: add actual user check, right now its mockedish
+     * 
+     * @returns {boolean} 
+     * 
+     * @memberOf GuardMiddleware
+     */
     public canActivate(): boolean
     {
         let loggedIn = true;
