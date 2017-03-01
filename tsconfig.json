@@ -9,6 +9,12 @@
     "experimentalDecorators": true,
     "lib": [
       "es2016"
+    ],
+    "exclude": [
+      "node_modules/**",
+      "typings/main",
+      "typings/main.d.ts"
     ]
+
   }
 }
