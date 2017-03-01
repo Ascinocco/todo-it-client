@@ -64,12 +64,12 @@ export class User
   {
     console.log(this.email);
     console.log(this.password);
-    
+
   }
 
   public logout(): void
   {
-
+    
   }
 
   public resetPassword(newPassword: string, confirmPassword: string): boolean
