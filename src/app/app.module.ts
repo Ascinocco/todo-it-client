@@ -1,21 +1,27 @@
+// libs
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+// components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './LoginComponent/LoginComponent';
-import { RegisterComponent } from './RegisterComponent/RegisterComponent';
-import { DashboardComponent } from './DashboardComponent/DashboardComponent';
-import { LandingComponent } from './LandingComponent/LandingComponent';
+import { LoginComponent } from './Components/LoginComponent/LoginComponent';
+import { RegisterComponent } from './Components/RegisterComponent/RegisterComponent';
+import { DashboardComponent } from './Components/DashboardComponent/DashboardComponent';
+import { LandingComponent } from './Components/LandingComponent/LandingComponent';
 
-const routes: Routes = [
-  { path: 'landing', component: LandingComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent }
-];
+// services
+import { UserService } from './Services/UserService';
+import { AuthService } from './Services/AuthService';
+
+// middleware
+import { GuardMiddleware } from './Middleware/GuardMiddleware';
+
+// routes
+import { AppRoutes } from './Routes/AppRoutes';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +35,13 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [
+    GuardMiddleware,
+    AuthService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
