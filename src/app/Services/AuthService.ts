@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, Request } from '@angular/http';
+import { HttpService } from './HttpService';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { User } from '../Models/User';
 
@@ -7,10 +8,10 @@ import { User } from '../Models/User';
 export class AuthService
 {
     public token: string;
-    private http: Http;
+    private http: HttpService;
     private localStorage: LocalStorageService;
 
-    constructor(http: Http, localStorage: LocalStorageService)
+    constructor(http: HttpService, localStorage: LocalStorageService)
     {
        this.http = http;
        this.localStorage = localStorage;
@@ -18,12 +19,13 @@ export class AuthService
 
     public login()
     {
-       
+       // hit server
+       return true
     }
 
     public logout()
     {
-    
+        return true;
     }
 
     private storeToken(headers: Headers): void
