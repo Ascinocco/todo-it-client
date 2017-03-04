@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+// 3rd party libs
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 // components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/LoginComponent/LoginComponent';
@@ -35,7 +38,8 @@ import { AppRoutes } from './Routes/AppRoutes';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    LocalStorageModule.withConfig({ prefix: 'todo-it', storageType: 'localStorage' })
   ],
   providers: [
     GuardMiddleware,
