@@ -23,10 +23,16 @@ export class AuthService
     public login(user: User): any
     {
         this.http.post('http://localhost:3000/auth/login', user)
-            .map((res: Response) => res.json())
+            // .map((res: Response) => res.json())
             .subscribe((res) => {
-                console.log('What the fuck?');
-                console.log(res);
+                var payload = res.json();
+                var headers = res.headers;
+
+                this.storeToken(headers);
+
+                console.log('local storage token -------');
+                console.log(this.localStorage.get('x-access-token'));
+
             });
     }
 
