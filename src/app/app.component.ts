@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { LocalStorageService } from 'angular-2-local-storage';
+
 import { LoginComponent } from './Components/LoginComponent/LoginComponent';
 import { RegisterComponent } from './Components/RegisterComponent/RegisterComponent';
 import { DashboardComponent } from './Components/DashboardComponent/DashboardComponent';
@@ -18,17 +21,19 @@ export class AppComponent
   public dashboardComponent: DashboardComponent;
   public landingComponent: LandingComponent;
   public router: Router;
+  public localStorage: LocalStorageService;
   // public user: User;
 
   constructor(LoginComponent: LoginComponent, RegisterComponent: RegisterComponent,
               DashboardComponent: DashboardComponent, LandingComponent: LandingComponent,
-              router: Router)
+              router: Router, localStorage: LocalStorageService)
   {
     this.loginComponent = LoginComponent;
     this.registerComponent = RegisterComponent;
     this.dashboardComponent = DashboardComponent;
     this.landingComponent = LandingComponent;
     this.router = router;
+    this.localStorage = localStorage;
     this.router.navigate(['landing'])
   }
 }
