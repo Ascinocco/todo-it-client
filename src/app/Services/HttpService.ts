@@ -21,7 +21,7 @@ export class HttpService
 
     private createAuthHeader(headers: Headers): void
     {
-        const token = this.localStorage.get('x-access-token');
+        const token = this.localStorage.get('x-access-token').toString();
         headers.append('x-access-token', token);
     }
 
