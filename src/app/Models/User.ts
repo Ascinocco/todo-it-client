@@ -3,8 +3,8 @@ export class User
   private _id: string;
   private email: string;
   private password: string;
-  private token: string;
-  constructor(_id?: string, email?: string, password?: string, token?: string)
+  
+  constructor(_id?: string, email?: string, password?: string)
   {
     if (_id) {
       this._id = _id;
@@ -22,12 +22,6 @@ export class User
       this.password = password;
     } else {
       this.password = "";
-    }
-
-    if (token) {
-      this.token = token;
-    } else {
-      this.token = "";
     }
   }
 
@@ -56,31 +50,4 @@ export class User
     this.password = password;
   }
 
-  public getToken(): string
-  {
-    return this.token;
-  }
-
-  private setToken(token: string): void
-  {
-    this.token = token;
-  }
-
-  /** authenticate methods **/
-  public login(): void
-  {
-    console.log(this.email);
-    console.log(this.password);
-
-  }
-
-  public logout(): void
-  {
-    
-  }
-
-  public resetPassword(newPassword: string, confirmPassword: string): boolean
-  {
-    return false;
-  }
 }

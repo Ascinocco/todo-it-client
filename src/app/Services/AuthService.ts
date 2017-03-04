@@ -17,15 +17,20 @@ export class AuthService
        this.localStorage = localStorage;
     }
 
-    public login()
+    public login(user: User)
     {
        // hit server
        return true
     }
 
-    public logout()
+    public logout(user: User)
     {
         return true;
+    }
+
+    public resetPassword(user: User, newPassword: string, confirmPassword: string)
+    {
+
     }
 
     private storeToken(headers: Headers): void
