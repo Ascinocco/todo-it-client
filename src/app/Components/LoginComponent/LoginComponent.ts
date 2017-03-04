@@ -34,14 +34,9 @@ export class LoginComponent
   public login()
   {
     let user = new User('' ,this.email, this.password);
-    user = this.authService.login(user);
-
-    if (user) {
-      this.clearLoginForm();
-      this.router.navigate(['dashboard']);
-    } else {
-      this.errors = ['error 1', 'error 2'];
-    }
+    this.authService.login(user);
+    this.clearLoginForm();
+    this.router.navigate(['dashboard']);
   }
 
   public clearLoginForm(): void

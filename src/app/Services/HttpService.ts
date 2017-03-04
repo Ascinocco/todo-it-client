@@ -6,12 +6,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { LocalStorageService } from 'angular-2-local-storage';
+import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService
 {
-    private http: Http;
-    private localStorage: LocalStorageService;
+    public http: Http;
+    public localStorage: LocalStorageService;
 
     constructor(http: Http, localStorage: LocalStorageService)
     {
@@ -19,10 +20,16 @@ export class HttpService
         this.localStorage = localStorage;
     }
 
-    private createAuthHeader(headers: Headers): void
+    public createAuthHeader(headers: Headers): void
     {
-        const token = this.localStorage.get('x-access-token').toString();
-        headers.append('x-access-token', token);
+        try {
+            const token = this.localStorage.get('x-access-token').toString();
+            headers.append('x-access-token', token);
+        } catch (err) {
+            console.error(err);
+            console.error('No token found');
+        }
+        
     }
 
     public get(url: string): any
