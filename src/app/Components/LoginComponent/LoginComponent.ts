@@ -28,7 +28,7 @@ export class LoginComponent
   // this is my basic stub for now
   public login()
   {
-    let user = new User(this.email, this.password);
+    let user = new User('' ,this.email, this.password, '');
     user.login();
     this.clearLoginForm();
     this.router.navigate(['dashboard']);
