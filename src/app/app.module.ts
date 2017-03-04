@@ -18,6 +18,7 @@ import { LandingComponent } from './Components/LandingComponent/LandingComponent
 // services
 import { UserService } from './Services/UserService';
 import { AuthService } from './Services/AuthService';
+import { HttpService } from './Services/HttpService';
 
 // middleware
 import { GuardMiddleware } from './Middleware/GuardMiddleware';
@@ -44,7 +45,8 @@ import { AppRoutes } from './Routes/AppRoutes';
   providers: [
     GuardMiddleware,
     AuthService,
-    UserService
+    UserService,
+    HttpService,
   ],
   bootstrap: [AppComponent]
 })

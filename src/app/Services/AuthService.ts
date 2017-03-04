@@ -17,10 +17,12 @@ export class AuthService
        this.localStorage = localStorage;
     }
 
-    public login(user: User)
+    public login(user: User): any
     {
+
+
        // hit server
-       return true
+       return new User();
     }
 
     public logout(user: User)
