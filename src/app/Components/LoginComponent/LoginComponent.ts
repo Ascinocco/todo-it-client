@@ -34,7 +34,11 @@ export class LoginComponent
   public login()
   {
     let user = new User('' ,this.email, this.password);
-    this.authService.login(user);
+    this.authService.login(user)
+        .subscribe((res) => {
+          console.log(res);
+        });
+
     this.clearLoginForm();
     this.router.navigate(['dashboard']);
   }

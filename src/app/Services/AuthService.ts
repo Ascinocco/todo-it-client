@@ -22,17 +22,14 @@ export class AuthService
 
     public login(user: User): any
     {
-        this.http.post('http://localhost:3000/auth/login', user)
-            // .map((res: Response) => res.json())
-            .subscribe((res) => {
-                var payload = res.json();
-                var headers = res.headers;
+       return this.http.post('http://localhost:3000/auth/login', user)
+            .map((res: Response) => {
+                let data = res.json();
 
-                this.storeToken(headers);
+                this.storeToken(res.headers);
+                this.storeUser(data.user);
 
-                console.log('local storage token -------');
-                console.log(this.localStorage.get('x-access-token'));
-
+                return data;
             });
     }
 
@@ -44,6 +41,16 @@ export class AuthService
     public resetPassword(user: User, newPassword: string, confirmPassword: string)
     {
 
+    }
+
+    private storeUser(user: User): void
+    {
+        this.localStorage.set('user', user);
+    }
+
+    private removeUser(user: User): void
+    {
+        this.localStorage.set('user', '');
     }
 
     private storeToken(headers: Headers): void
