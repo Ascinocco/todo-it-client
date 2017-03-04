@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, Request } from '@angular/http';
+import { LocalStorageService } from 'angular-2-local-storage';
 import { User } from '../Models/User';
 
 @Injectable()
@@ -7,23 +8,32 @@ export class AuthService
 {
     public token: string;
     private http: Http;
+    private localStorage: LocalStorageService;
 
-    constructor(http: Http)
+    constructor(http: Http, localStorage: LocalStorageService)
     {
-        let user = new User('anthony@mail.com'); // should be getting user from 
-        // cookie or local storage
-        this.token = "myToken1234"
+       this.http = http;
+       this.localStorage = localStorage;
     }
 
     public login()
     {
-        // return user
-        return new User('scinoccoAnthony@mail.com');
+       
     }
 
     public logout()
     {
-        // destory local storage etc
-        return true
+    
+    }
+
+    private storeToken(headers: Headers): void
+    {
+        const token = headers.get('x-access-token');
+        this.localStorage.set('x-access-token', token);
+    }
+
+    private destoryToken(headers: Headers): void
+    {
+        this.localStorage.set('x-access-token', '');
     }
 }
