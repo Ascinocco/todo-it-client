@@ -34,6 +34,8 @@ export class RegisterComponent
         this.password = "";
         this.confirmPassword = "";
 
+        this.errors = [];
+        this.messages = [];
         this.showRegistration = false;
 
         this.router = router;

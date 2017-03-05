@@ -59,6 +59,15 @@ export class AuthService
                 });
     }
 
+    /**
+     * TODO: this 
+     * 
+     * @param {User} user 
+     * @param {string} newPassword 
+     * @param {string} confirmPassword 
+     * 
+     * @memberOf AuthService
+     */
     public resetPassword(user: User, newPassword: string, confirmPassword: string)
     {
 
