@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Injectable()
 export class GuardMiddleware implements CanActivate
 {
     private router: Router;
+    private localStorage: LocalStorageService;
 
-    constructor(router: Router)
+    constructor(router: Router, localStorage: LocalStorageService)
     {
         this.router = router;
+        this.localStorage = localStorage;
     }
 
     /**
@@ -21,8 +24,7 @@ export class GuardMiddleware implements CanActivate
      */
     public canActivate(): boolean
     {
-        let loggedIn = true;
-        if (loggedIn) {
+        if (this.localStorage.get('x-access-token')) {
             return true;
         }
 

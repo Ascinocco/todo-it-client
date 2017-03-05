@@ -1,17 +1,10 @@
 export class User
 {
-  private _id: string;
   private email: string;
   private password: string;
   
-  constructor(_id?: string, email?: string, password?: string)
+  constructor(email?: string, password?: string)
   {
-    if (_id) {
-      this._id = _id;
-    } else {
-      this._id = "";
-    }
-
     if (email) {
       this.email = email;
     } else {

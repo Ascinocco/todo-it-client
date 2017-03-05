@@ -33,9 +33,16 @@ export class AuthService
             });
     }
 
-    public logout(user: User)
+    public logout()
     {
-        return true;
+        // using http service instead of http here, because http service automatically
+        // attaches headers to request
+        return this.httpService.post('http://localhost:3000/auth/logout', {})
+                .map((res) => {
+                    this.localStorage.set('x-access-token', '');
+                    this.localStorage.set('user', '');
+                    return res.json();
+                });
     }
 
     public resetPassword(user: User, newPassword: string, confirmPassword: string)

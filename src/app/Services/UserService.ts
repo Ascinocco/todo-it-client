@@ -24,7 +24,7 @@ export class UserService
             // error
         // mocking this for now
         
-        let user = new User('anthony@mail.com', '', 'uierhguiehruigh34894h');
+        let user = new User('anthony@mail.com', 'uierhguiehruigh34894h');
         return user;
     }
 
