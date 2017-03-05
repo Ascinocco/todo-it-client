@@ -33,15 +33,29 @@ export class AuthService
             });
     }
 
-    public logout()
+    public logout(): any
     {
         // using http service instead of http here, because http service automatically
         // attaches headers to request
         return this.httpService.post('http://localhost:3000/auth/logout', {})
                 .map((res) => {
-                    this.localStorage.set('x-access-token', '');
-                    this.localStorage.set('user', '');
+                    this.destoryToken();
+                    this.removeUser();
                     return res.json();
+                });
+    }
+
+    public register(user: User, confirmPassword: string): any
+    {
+        return this.http.post('http://localhost:3000/auth/register', { user: user, confirmPassword: confirmPassword })
+                .map((res) => {
+                    console.log(res);
+                    let data = res.json();
+
+                    this.storeToken(res.headers);
+                    this.storeUser(data.user)
+
+                    return data;
                 });
     }
 
@@ -55,7 +69,7 @@ export class AuthService
         this.localStorage.set('user', user);
     }
 
-    private removeUser(user: User): void
+    private removeUser(): void
     {
         this.localStorage.set('user', '');
     }
@@ -66,7 +80,7 @@ export class AuthService
         this.localStorage.set('x-access-token', token);
     }
 
-    private destoryToken(headers: Headers): void
+    private destoryToken(): void
     {
         this.localStorage.set('x-access-token', '');
     }

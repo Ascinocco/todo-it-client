@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../Models/User';
+import { AuthService } from '../../Services/AuthService';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
     selector: 'register',
@@ -9,19 +11,34 @@ import { User } from '../../Models/User';
 
 export class RegisterComponent
 {
+    public firstName: string;
+    public lastName: string;
     public email: string;
     public password: string;
     public confirmPassword: string;
-    public showRegistration: boolean;
-    private router: Router;
 
-    constructor(router: Router)
+    public showRegistration: boolean;
+
+    public errors: Array<string>;
+    public messages: Array<string>;
+
+    private router: Router;
+    private authService: AuthService;
+    private localStorage: LocalStorageService;
+
+    constructor(router: Router, authService: AuthService, localStorage: LocalStorageService)
     {
+        this.firstName = "";
+        this.lastName = "";
         this.email = "";
         this.password = "";
         this.confirmPassword = "";
+
         this.showRegistration = false;
+
         this.router = router;
+        this.localStorage = localStorage;
+        this.authService = authService;
     }
 
     // this should return a user object
@@ -29,14 +46,11 @@ export class RegisterComponent
     // this is my basic stub for now
     public register()
     {
-        // post server
-        // server return new user
-        console.log(this.email);
-        console.log(this.password);
-        console.log(this.confirmPassword);
-        this.clearRegistrationForm();
-        this.router.navigate(['dashboard']);
-        return new User();
+        let user = new User(this.email, this.password, this.firstName, this.lastName);
+        this.authService.register(user, this.confirmPassword)
+            .subscribe((res) => {
+
+            });
     }
 
     public clearRegistrationForm(): void

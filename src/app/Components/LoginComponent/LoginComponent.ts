@@ -61,13 +61,11 @@ export class LoginComponent
     this.authService.logout()
         .subscribe((res) => {
           if (res.success) {
-            console.log('qui')
             this.router.navigate(['landing']);
             this.messages.push(res.msg);
           } else {
             // still move to landing page because local token should be gone
             // whether or not server side worked
-            console.log('le no')
             this.router.navigate(['landing']);
             this.errors.push(res.msg);
           }
