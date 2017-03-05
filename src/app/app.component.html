@@ -1,37 +1,48 @@
-<div class="navbar navbar-info">
-  <div class="container-fluid">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/landing" style="color: white; font-weight: 500">Todo It</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+      <a class="navbar-brand page-scroll" routerLink="/landing">Todo It</a>
     </div>
-    <div class="navbar-collapse collapse navbar-material-light-blue-collapse">
-      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === false">
-        <li><a routerLink="/register" style="color: white; font-weight: 500">Register</a></li>
-        <li><a routerLink="/login" style="color: white; font-weight: 500">Login</a></li>
-      </ul>
 
-      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === true">
-        <li><a routerLink="/dashboard" style="color: white; font-weight: 500">DASHBOARD</a></li>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === false">
         <li>
-        <div class="dropdown">
-          <a class="btn btn-default dropdown-toggle" style="color: white;" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              {{ this.getUser() }} &nbsp; <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Settings</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a style="cursor: pointer;" (click)="loginComponent.logout()">Logout</a></li>
-          </ul>
-        </div>
+          <a class="page-scroll" routerLink="/register">Sign up</a>
+        </li>
+        <li>
+          <a class="page-scroll" routerLink="/login">Login</a>
         </li>
       </ul>
 
+      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === true">
+        <li>
+          <a class="page-scroll" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              {{ this.getUser() }} &nbsp; <span class="caret"></span>
+            </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a style="cursor: pointer;" (click)="loginComponent.logout()">Logout</a></li>
+          </ul>
+          
+        </li>
+      </ul>
+
+
+
     </div>
+    <!-- /.navbar-collapse -->
   </div>
-</div>
+  <!-- /.container-fluid -->
+</nav>
 
 <router-outlet></router-outlet>
