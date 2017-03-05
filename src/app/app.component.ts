@@ -22,6 +22,7 @@ export class AppComponent
   public landingComponent: LandingComponent;
   public router: Router;
   public localStorage: LocalStorageService;
+  public firstName: string;
   // public user: User;
 
   constructor(LoginComponent: LoginComponent, RegisterComponent: RegisterComponent,
@@ -35,5 +36,15 @@ export class AppComponent
     this.router = router;
     this.localStorage = localStorage;
     this.router.navigate(['landing'])
+    this.firstName = "";
+  }
+
+  public getUser(): string
+  {
+    let user = this.localStorage.get('user');
+
+    if ("firstName" in user) {
+      return user["firstName"];
+    }
   }
 }
