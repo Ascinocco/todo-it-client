@@ -49,7 +49,13 @@ export class RegisterComponent
         let user = new User(this.email, this.password, this.firstName, this.lastName);
         this.authService.register(user, this.confirmPassword)
             .subscribe((res) => {
-
+                if (res.success) {
+                    this.clearRegistrationForm();
+                    this.messages.push(res.msg);
+                    this.router.navigate(['dashboard']);
+                } else {
+                    this.errors.push(res.msg);
+                }
             });
     }
 
