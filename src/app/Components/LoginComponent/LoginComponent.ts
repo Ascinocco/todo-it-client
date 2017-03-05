@@ -28,7 +28,7 @@ export class LoginComponent
   {
     this.email = "";
     this.password = "";
-    this.showLogin = true;
+    this.showLogin = false;
     this.router = router;
     this.errors = [];
     this.messages = [];
@@ -47,6 +47,7 @@ export class LoginComponent
     this.authService.login(user)
         .subscribe((res) => {
           if (res.success) {
+            this.showLogin = false;
             this.clearLoginForm();
             this.messages.push(res.msg);
             this.router.navigate(['dashboard']);

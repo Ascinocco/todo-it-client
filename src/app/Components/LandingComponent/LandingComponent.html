@@ -1,18 +1,114 @@
-<div class="container">
-  <!-- Need to hide the landing page on login/register-->
-  <div class="row">
-    <div class="col-md-8 col-lg-8">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h1>Todo It</h1>
-          <h3>Join the Todo revolution</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non tempor urna. Sed sit amet lacinia nibh, nec rutrum
-            erat. Nunc laoreet venenatis nibh, vitae laoreet nisl sollicitudin eget. Interdum et malesuada fames ac ante
-            ipsum primis in faucibus. Donec vel suscipit velit.
-          </p>
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+      <a class="navbar-brand page-scroll" routerLink="/landing">Todo It</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === false">
+        <li>
+          <a class="page-scroll" (click)="registerComponent.showRegistration = true; loginComponent.showLogin = false;">Sign up</a>
+        </li>
+        <li>
+          <a class="page-scroll" (click)="loginComponent.showLogin = true; registerComponent.showRegistration = false;">Login</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === true">
+        <li>
+          <a class="page-scroll" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              {{ this.getUserFirstName() }} &nbsp; <span class="caret"></span>
+            </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a routerLink="/dashboard/settings">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a style="cursor: pointer;" (click)="loginComponent.logout()">Logout</a></li>
+          </ul>
+
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 col-md-7 col-lg-7">
+        <div class="header-content">
+          <div class="header-content-inner">
+            <h1>Todo It, the app for todo extremists</h1>
+            <a class="btn btn-outline btn-xl page-scroll" (click)="registerComponent.showRegistration = true; loginComponent.showLogin = false;">Sign up, it's free!</a>
+          </div>
         </div>
       </div>
+
+      <br /> <!-- A professional level spacing fix -->
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="col-sm-5 col-md-5 col-lg-5" *ngIf="loginComponent.showLogin === true"><!-- Login Form -->
+          <div class="modal-dialog">
+            <div class="loginmodal-container">
+              <div class="row" *ngIf="loginComponent.errors.length > 0">
+                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of loginComponent.errors">
+                  {{ error }}
+                </div>
+              </div>
+
+              <div class="row">
+                <h1 style="color: slategrey">Login</h1>
+                <br />
+                <form>
+                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="loginComponent.email" required="required">
+                  <input type="password" name="pass" placeholder="Password" style="color: slategray;" [(ngModel)]="loginComponent.password" required="required">
+                  <input type="submit" name="login" class="login loginmodal-submit" value="Login" (click)="loginComponent.login();">
+                </form>
+              </div>
+            </div>
+          </div><!-- End Login Form -->
+      </div>
+
+      <div class="col-sm-5 col-md-5 col-lg-5" *ngIf="registerComponent.showRegistration === true"><!-- Registration Form -->
+          <div class="modal-dialog">
+            <div class="loginmodal-container">
+              <div class="row" *ngIf="registerComponent.errors.length > 0">
+                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of registerComponent.errors">
+                  {{ error }}
+                </div>
+              </div>
+
+              <div class="row">
+                <h1 style="color: slategrey">Sign Up</h1>
+                <br />
+                <form>
+                  <input type="text" name="firstName" placeholder="First Name" style="color: slategray;" [(ngModel)]="registerComponent.firstName" required="required">
+                  <input type="text" name="lastName" placeholder="Last Name" style="color: slategray;" [(ngModel)]="registerComponent.lastName" required="required">
+                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="registerComponent.email" required="required">
+                  <input type="password" name="password" placeholder="Password" style="color: slategray;" [(ngModel)]="registerComponent.password" required="required">
+                  <input type="password" name="confirmPassword" placeholder="Confirm Password" style="color: slategray;" [(ngModel)]="registerComponent.confirmPassword" required="required">
+                  <input type="submit" name="login" class="login loginmodal-submit" value="Sign Up" (click)="registerComponent.register();">
+                </form>
+              </div>
+            </div>
+          </div><!-- End Reg Form -->
+      </div>
+
     </div>
   </div>
-</div>
+</header>
