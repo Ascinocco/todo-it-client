@@ -55,27 +55,31 @@
         </div>
       </div>
 
-      <div> <!--Login and register modals-->
+      <div>
+        <!--Login and register modals-->
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true" style="display: none;">
           <div class="modal-dialog">
             <div class="loginmodal-container">
-              <div *ngIf="errors.length > 0">
-                <div class="col-sm-8 col-md-8 col-lg-8 alert alert-danger" *ngFor="let error of errors">
+              <div class="row" *ngIf="loginComponent.errors.length > 0">
+                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of loginComponent.errors">
                   {{ error }}
                 </div>
               </div>
 
-              <h1 style="color: slategrey">Login</h1>
-              <br>
-              <form>
-                <input type="email" name="email" placeholder="Email" [(ngModel)]="loginComponent.email">
-                <input type="password" name="pass" placeholder="Password" [(ngModel)]="loginComponent.password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login" (clicl)="loginComponent.login();">
-              </form>
+              <div class="row">
+                <h1 style="color: slategrey">Login</h1>
+                <br />
+                <form>
+                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="loginComponent.email">
+                  <input type="password" name="pass" placeholder="Password" style="color: slategray;" [(ngModel)]="loginComponent.password">
+                  <input type="submit" name="login" class="login loginmodal-submit" value="Login" (click)="loginComponent.login();">
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div> <!-- Login and register modals end -->
+      </div>
+      <!-- Login and register modals end -->
     </div>
   </div>
 </header>

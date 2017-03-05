@@ -39,6 +39,7 @@ export class LoginComponent
 
   public login(): void
   {
+    console.log('clickling??')
     // clear errors and messages on login click
     this.errors = [];
     this.messages = [];
