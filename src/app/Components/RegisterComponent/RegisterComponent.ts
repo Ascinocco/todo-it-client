@@ -48,6 +48,10 @@ export class RegisterComponent
     // this is my basic stub for now
     public register()
     {
+        // reset errors and messages when submitting form
+        this.errors = [];
+        this.messages = [];
+
         let user = new User(this.email, this.password, this.firstName, this.lastName);
         this.authService.register(user, this.confirmPassword)
             .subscribe((res) => {

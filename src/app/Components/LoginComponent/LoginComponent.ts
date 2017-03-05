@@ -14,9 +14,12 @@ export class LoginComponent
 {
   public email: string;
   public password: string;
+
   public errors: Array<string>;
   public messages: Array<string>;
+
   public showLogin: boolean;
+
   private router: Router;
   private authService: AuthService;
   private localStorage: LocalStorageService;
@@ -36,6 +39,10 @@ export class LoginComponent
 
   public login(): void
   {
+    // clear errors and messages on login click
+    this.errors = [];
+    this.messages = [];
+
     let user = new User(this.email, this.password);
     this.authService.login(user)
         .subscribe((res) => {
@@ -78,7 +85,6 @@ export class LoginComponent
     this.password = "";
     this.showLogin = false;
   }
-
   
   /** 
    * Needed for displaying the appropriate navbar links
