@@ -22,12 +22,22 @@ export class ProfileSettingsService
         this.localStorage = localStorage;
     }
 
-    public update(user: User): any
+    public update(user: User, confirmPassword?: string): any
     {
         const token: string = this.authService.getToken();
-        this.httpService.put('http://localhost:3000/user/update', user)
-            .map((res) => {
-                return res.json();
-            });
+
+        if (confirmPassword.length > 0) {
+            this.httpService.put('http://localhost:3000/user/update', { user: user , confirmPassword: confirmPassword})
+                .map((res) => {
+                    return res.json();
+                });
+        } else {
+            this.httpService.put('http://localhost:3000/user/update', { user: user })
+                .map((res) => {
+                    return res.json();
+                });
+        }
+
+        
     }
 }

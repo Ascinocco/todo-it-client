@@ -33,7 +33,7 @@ export class ProfileSettingsComponent
         try {
             this.email = user["email"];
             this.lastName = user["lastName"];
-            this.password = user["password"];
+            this.password = "";
             this.firstName = user["firstName"];
             this.confirmPassword = "";
         } catch (err) {
@@ -42,16 +42,27 @@ export class ProfileSettingsComponent
         }
     }
 
-    public update()
+    public update(): void
     {
         let user = new User(this.email, this.password, this.firstName, this.lastName);
-        this.profileSettingsService.update(user)
-        .subscribe((res) => {
-            if (res.success) {
+        if (this.confirmPassword.length > 0) {
+            this.profileSettingsService.update(user, this.confirmPassword)
+                .subscribe((res) => {
+                if (res.success) {
                 // success actions
-            } else {
+                } else {
                 // failure actions
-            }
+                }
         });
+        } else {
+            this.profileSettingsService.update(user)
+                .subscribe((res) => {
+                    if (res.success) {
+                        // success actions
+                    } else {
+                        // failure actions
+                    }
+                });
+        }
     }
 }

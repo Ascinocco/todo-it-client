@@ -1,0 +1,127 @@
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+      <!-- Logo -->
+      <a routerLink="/dashboard" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini" style="cursor: pointer;">TDIT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg" style="cursor: pointer;">Todo It</span>
+      </a>
+
+      <!-- Header Navbar -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <!-- User Account Menu -->
+            <li class="dropdown">
+              <!-- Menu Toggle Button -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                <span class="hidden-xs" style="cursor: pointer;">{{ this.authService.getUserFirstName() }}</span> &nbsp;
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- The user image in the menu -->
+                <li class="text-center" style="cursor: pointer;" routerLink="/settings"><a>Settings</a></li>
+                <li class="text-center" style="cursor: pointer;"><a (click)="logout()">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+
+        <!-- /.search form -->
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+          <li class="header">&nbsp;</li>
+          <!-- Optionally, you can add icons to the links -->
+          <li><a href="#"><i class="fa fa-link"></i> <span>App Settings</span></a></li>
+          <li><a href="#"><i class="fa fa-link"></i> <span>Profile Settings</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i> <span>Notification Settings</span></a></li>
+
+          
+        </ul>
+        <!-- /.sidebar-menu -->
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+      <div class="row">
+        <!-- Main content -->
+        <section class="content">
+
+          <div class="container">
+            <div class="col-sm-offset-1 col-md-offset-1 col-ld-offset-1 col-sm-8 col-md-8 col-lg-8">
+              <div class="row">
+                <div class="box box-default">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Profile Settings</h3>
+                  </div>
+
+                  <form role="form">
+                      <div class="box-body">
+                          <div class="form-group">
+                              <label for="firstName">First Name</label>
+                              <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" required="required" [(ngModel)]="firstName">
+                          </div>
+                          <div class="form-group">
+                              <label for="lastName">Last Name</label>
+                              <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required="required" [(ngModel)]="lastName">
+                          </div>
+                          <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" name="email" class="form-control" id="email" placeholder="Email" required="required" [(ngModel)]="email">
+                          </div>
+                          <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" name="password" class="form-control" id="password" placeholder="Password" required="required" [(ngModel)]="password">
+                          </div>
+                          <div class="form-group">
+                              <label for="confirmPassword">Confirm Password</label>
+                              <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" required="required" [(ngModel)]="confirmPassword">
+                          </div>
+                      </div>
+                      <div class="box-footer text-right">
+                          <button type="submit" class="btn btn-primary" (click)="update();">Update</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Good gracious me, all these br's are unsettling -->
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        </section>
+      </div>
+
+
+
+    </div>
+    <!-- close wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2016 <a href="https://www.anthonyscinocco.com" target="_blank">Anthony Scinocco</a>.</strong>      All rights reserved.
+    </footer>
