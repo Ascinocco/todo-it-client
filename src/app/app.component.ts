@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { LandingComponent } from './Components/LandingComponent/LandingComponent';
+import { AddTodoComponent } from './Components/TodoDashboard/AddTodoComponent/AddTodoComponent';
 import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboardComponent/TodoDashboardComponent';
 
 
@@ -9,7 +10,11 @@ import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboard
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TodoDashboardComponent, LandingComponent]
+  providers: [
+      LandingComponent,
+      TodoDashboardComponent,
+      AddTodoComponent
+    ]
 })
 export class AppComponent
 {

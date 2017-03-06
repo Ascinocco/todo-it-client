@@ -7,9 +7,9 @@
     <!-- Logo -->
     <a routerLink="/dashboard" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">TDIT</span>
+      <span class="logo-mini" style="cursor: pointer;">TDIT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">Todo It</span>
+      <span class="logo-lg" style="cursor: pointer;">Todo It</span>
     </a>
 
     <!-- Header Navbar -->
@@ -27,7 +27,7 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{ getUserFirstName() }}</span> &nbsp; <span class="caret"></span>
+              <span class="hidden-xs" style="cursor: pointer;">{{ getUserFirstName() }}</span> &nbsp; <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -85,25 +85,30 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <div class="row">
+      <section class="content-header">
+        <add-todo-component></add-todo-component>
+      </section>
+    </div>
     
-    <section class="content-header">
-      <h1>Main Todo Component</h1>
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
+    <div class="row">
+      <!-- Main content -->
+      <section class="content">
 
-        <ul>
-            <li>Todo 1</li>
-            <li>Todo 2</li>
-            <li>Todo 3</li>
-        </ul>
-      <!-- Your Page Content Here -->
+          <ul>
+              <li>Todo 1</li>
+              <li>Todo 2</li>
+              <li>Todo 3</li>
+          </ul>
+        <!-- Your Page Content Here -->
 
-      <!-- Good gracious me, all these br's are unsettling -->
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <!-- Good gracious me, all these br's are unsettling -->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-    </section>
+      </section>
+    </div>
+    
      
   
 </div> <!-- close wrapper -->

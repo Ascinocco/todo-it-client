@@ -10,9 +10,9 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 
 // components
 import { AppComponent } from './app.component';
-import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboardComponent/TodoDashboardComponent';
 import { LandingComponent } from './Components/LandingComponent/LandingComponent';
-
+import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboardComponent/TodoDashboardComponent';
+import { AddTodoComponent } from './Components/TodoDashboard/AddTodoComponent/AddTodoComponent';
 // services
 import { AuthService } from './Services/AuthService';
 import { HttpService } from './Services/HttpService';
@@ -23,12 +23,12 @@ import { GuardMiddleware } from './Middleware/GuardMiddleware';
 // routes
 import { AppRoutes } from './Routes/AppRoutes';
 
-
 @NgModule({
   declarations: [
     AppComponent,
+    LandingComponent,
     TodoDashboardComponent,
-    LandingComponent
+    AddTodoComponent
   ],
   imports: [
     BrowserModule,
