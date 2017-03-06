@@ -1,10 +1,7 @@
 import { Routes } from '@angular/router';
 import { GuardMiddleware } from '../Middleware/GuardMiddleware';
-
-import { LoginComponent } from '../Components/LoginComponent/LoginComponent';
-import { RegisterComponent } from '../Components/RegisterComponent/RegisterComponent';
-import { DashboardComponent } from '../Components/DashboardComponent/DashboardComponent';
 import { LandingComponent } from '../Components/LandingComponent/LandingComponent';
+import { DashboardComponent } from '../Components/DashboardComponent/DashboardComponent';
 
 
 export const AppRoutes: Routes = [

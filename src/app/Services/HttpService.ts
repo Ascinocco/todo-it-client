@@ -1,12 +1,7 @@
-/**
- * A wrapper for the angular's http lib that allows me to easily set headers 
- * on requests
- * 
- */
+import 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { LocalStorageService } from 'angular-2-local-storage';
-import 'rxjs/Rx';
 
 @Injectable()
 export class HttpService
@@ -29,7 +24,6 @@ export class HttpService
             console.error(err);
             console.error('No token found');
         }
-        
     }
 
     public get(url: string): any
@@ -76,5 +70,4 @@ export class HttpService
             headers: headers
         });
     }
-    
 }

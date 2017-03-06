@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers, Response, Request } from '@angular/http';
-import { HttpService } from './HttpService';
-import { LocalStorageService } from 'angular-2-local-storage';
-import { User } from '../Models/User';
 import 'rxjs/Rx';
+import { User } from '../Models/User';
+import { Injectable } from '@angular/core';
+import { HttpService } from './HttpService';
+import { Http, Headers, Response, Request } from '@angular/http';
+import { LocalStorageService } from 'angular-2-local-storage';
+
 
 @Injectable()
 export class AuthService
 {
-    public token: string;
     public http: Http;
+    public token: string;
     private httpService: HttpService;
     private localStorage: LocalStorageService;
 
@@ -25,10 +26,8 @@ export class AuthService
        return this.http.post('http://localhost:3000/auth/login', user)
             .map((res: Response) => {
                 let data = res.json();
-
                 this.storeToken(res.headers);
                 this.storeUser(data.user);
-
                 return data;
             });
     }
