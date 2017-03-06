@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../Services/AuthService';
+import { Component } from '@angular/core';
+import { AuthService } from '../../../Services/AuthService';
 import { LocalStorageService } from 'angular-2-local-storage';
 
-
 @Component({
-    selector: 'dashbaord',
-    templateUrl: './DashboardComponent.html',
-    styleUrls: ['./DashboardComponent.css']
+    selector: 'todo-dashboard',
+    templateUrl: './TodoDashboardComponent.html',
+    styleUrls: ['./TodoDashboardComponent.css']
 })
 
-export class DashboardComponent 
+export class TodoDashboardComponent
 {
-    private localStorage: LocalStorageService;
-    private authService: AuthService;
     private router: Router;
+    private authService: AuthService;
+    private localStorage: LocalStorageService;
 
     constructor(localStorage: LocalStorageService, authService: AuthService, router: Router)
     {

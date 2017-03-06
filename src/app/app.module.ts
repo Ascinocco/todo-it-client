@@ -10,7 +10,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 
 // components
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './Components/DashboardComponent/DashboardComponent';
+import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboardComponent/TodoDashboardComponent';
 import { LandingComponent } from './Components/LandingComponent/LandingComponent';
 
 // services
@@ -27,7 +27,7 @@ import { AppRoutes } from './Routes/AppRoutes';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    TodoDashboardComponent,
     LandingComponent
   ],
   imports: [
