@@ -22,16 +22,18 @@ export class ProfileSettingsService
         this.localStorage = localStorage;
     }
 
-    public update(user: User, confirmPassword?: string): any
+    public update(user: User, confirmPassword?: string, newPassword?: string): any
     {
-        if (confirmPassword) {
-            return this.httpService.post('http://localhost:3000/user/update', { user: user , confirmPassword: confirmPassword})
+        if (confirmPassword && newPassword) {
+            return this.httpService.post('http://localhost:3000/user/update', { user: user , confirmPassword: confirmPassword, newPassword: newPassword})
                 .map((res) => {
+                    // save updated user to local storage
                     return res.json();
                 });
         } else {
             return this.httpService.post('http://localhost:3000/user/update', { user: user })
                 .map((res) => {
+                    // save updated user to local storage
                     return res.json();
                 });
         }

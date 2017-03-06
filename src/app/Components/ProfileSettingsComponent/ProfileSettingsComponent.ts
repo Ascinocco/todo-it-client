@@ -15,6 +15,7 @@ export class ProfileSettingsComponent
     public lastName: string;
     public password: string;
     public firstName: string;
+    public newPassword: string;
     public confirmPassword: string;
 
     private authService: AuthService;
@@ -35,6 +36,7 @@ export class ProfileSettingsComponent
             this.lastName = user["lastName"];
             this.password = "";
             this.firstName = user["firstName"];
+            this.newPassword = "";
             this.confirmPassword = "";
         } catch (err) {
             console.error('Could not set Profile Form');
@@ -45,8 +47,8 @@ export class ProfileSettingsComponent
     public update(): void
     {
         let user = new User(this.email, this.password, this.firstName, this.lastName);
-        if (this.confirmPassword) {
-            this.profileSettingsService.update(user, this.confirmPassword)
+        if (this.password && this.confirmPassword && this.newPassword) {
+            this.profileSettingsService.update(user, this.confirmPassword, this.newPassword)
                 .subscribe((res) => {
                 if (res.success) {
                 // success actions
