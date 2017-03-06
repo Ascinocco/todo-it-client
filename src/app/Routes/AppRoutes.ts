@@ -9,9 +9,6 @@ import { LandingComponent } from '../Components/LandingComponent/LandingComponen
 
 export const AppRoutes: Routes = [
     { path: 'landing', component: LandingComponent },
-    { path: 'login', component: LoginComponent }, // login needs to be secured against already logged in users
-    { path: 'register', component: RegisterComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [GuardMiddleware] },
-    // default redirect for incorrect urls
-    { path: '**', redirectTo: '/landing'},
+    { path: '**', redirectTo: '/landing'}, // default redirect for incorrect urls
 ];

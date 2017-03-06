@@ -11,28 +11,28 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === false">
+      <ul class="nav navbar-nav navbar-right" *ngIf="isUserLoggedIn() === false">
         <li>
-          <a class="page-scroll" (click)="registerComponent.showRegistration = true; loginComponent.showLogin = false;">Sign up</a>
+          <a style="cursor: pointer;" class="page-scroll" (click)="showRegistration = true; showLogin = false;">Sign up</a>
         </li>
         <li>
-          <a class="page-scroll" (click)="loginComponent.showLogin = true; registerComponent.showRegistration = false;">Login</a>
+          <a style="cursor: pointer;" class="page-scroll" (click)="showLogin = true; showRegistration = false;">Login</a>
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" *ngIf="loginComponent.userIsLoggedIn() === true">
+      <ul class="nav navbar-nav navbar-right" *ngIf="isUserLoggedIn() === true">
         <li>
           <a class="page-scroll" routerLink="/dashboard">Dashboard</a>
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              {{ this.getUserFirstName() }} &nbsp; <span class="caret"></span>
+              {{ getUserFirstName() }} &nbsp; <span class="caret"></span>
             </a>
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li><a routerLink="/dashboard/settings" style="color: slategrey;">Settings</a></li>
             <li role="separator" class="divider"></li>
-            <li><a style="cursor: pointer;" (click)="loginComponent.logout()" style="color: slategrey;">Logout</a></li>
+            <li><a style="cursor: pointer;" (click)="logout()" style="color: slategrey;">Logout</a></li>
           </ul>
 
         </li>
@@ -51,7 +51,7 @@
         <div class="header-content">
           <div class="header-content-inner">
             <h1>Todo It, the app for todo extremists</h1>
-            <a class="btn btn-outline btn-xl page-scroll" (click)="registerComponent.showRegistration = true; loginComponent.showLogin = false;">Sign up, it's free!</a>
+            <a class="btn btn-outline btn-xl page-scroll" (click)="showRegistration = true; showLogin = false;">Sign up, it's free!</a>
           </div>
         </div>
       </div>
@@ -63,11 +63,11 @@
       <br />
       <br />
       <br />
-      <div class="col-sm-5 col-md-5 col-lg-5" *ngIf="loginComponent.showLogin === true"><!-- Login Form -->
+      <div class="col-sm-5 col-md-5 col-lg-5" *ngIf="showLogin === true"><!-- Login Form -->
           <div class="modal-dialog">
             <div class="loginmodal-container">
-              <div class="row" *ngIf="loginComponent.errors.length > 0">
-                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of loginComponent.errors">
+              <div class="row" *ngIf="loginErrors.length > 0">
+                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of loginErrors">
                   {{ error }}
                 </div>
               </div>
@@ -76,20 +76,20 @@
                 <h1 style="color: slategrey">Login</h1>
                 <br />
                 <form>
-                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="loginComponent.email" required="required">
-                  <input type="password" name="pass" placeholder="Password" style="color: slategray;" [(ngModel)]="loginComponent.password" required="required">
-                  <input type="submit" name="login" class="login loginmodal-submit" value="Login" (click)="loginComponent.login();">
+                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="email" required="required">
+                  <input type="password" name="pass" placeholder="Password" style="color: slategray;" [(ngModel)]="password" required="required">
+                  <input type="submit" name="login" class="login loginmodal-submit" value="Login" (click)="login();">
                 </form>
               </div>
             </div>
           </div><!-- End Login Form -->
       </div>
 
-      <div class="col-sm-5 col-md-5 col-lg-5" *ngIf="registerComponent.showRegistration === true"><!-- Registration Form -->
+      <div class="col-sm-5 col-md-5 col-lg-5" *ngIf="showRegistration === true"><!-- Registration Form -->
           <div class="modal-dialog">
             <div class="loginmodal-container">
-              <div class="row" *ngIf="registerComponent.errors.length > 0">
-                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of registerComponent.errors">
+              <div class="row" *ngIf="registrationErrors.length > 0">
+                <div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger text-center" *ngFor="let error of registrationErrors">
                   {{ error }}
                 </div>
               </div>
@@ -98,12 +98,12 @@
                 <h1 style="color: slategrey">Sign Up</h1>
                 <br />
                 <form>
-                  <input type="text" name="firstName" placeholder="First Name" style="color: slategray;" [(ngModel)]="registerComponent.firstName" required="required">
-                  <input type="text" name="lastName" placeholder="Last Name" style="color: slategray;" [(ngModel)]="registerComponent.lastName" required="required">
-                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="registerComponent.email" required="required">
-                  <input type="password" name="password" placeholder="Password" style="color: slategray;" [(ngModel)]="registerComponent.password" required="required">
-                  <input type="password" name="confirmPassword" placeholder="Confirm Password" style="color: slategray;" [(ngModel)]="registerComponent.confirmPassword" required="required">
-                  <input type="submit" name="login" class="login loginmodal-submit" value="Sign Up" (click)="registerComponent.register();">
+                  <input type="text" name="firstName" placeholder="First Name" style="color: slategray;" [(ngModel)]="firstName" required="required">
+                  <input type="text" name="lastName" placeholder="Last Name" style="color: slategray;" [(ngModel)]="lastName" required="required">
+                  <input type="email" name="email" placeholder="Email" style="color: slategray;" [(ngModel)]="email" required="required">
+                  <input type="password" name="password" placeholder="Password" style="color: slategray;" [(ngModel)]="password" required="required">
+                  <input type="password" name="confirmPassword" placeholder="Confirm Password" style="color: slategray;" [(ngModel)]="confirmPassword" required="required">
+                  <input type="submit" name="login" class="login loginmodal-submit" value="Sign Up" (click)="register();">
                 </form>
               </div>
             </div>

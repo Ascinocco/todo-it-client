@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../Services/AuthService';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { LoginComponent } from '../LoginComponent/LoginComponent';
+
 
 @Component({
     selector: 'dashbaord',
@@ -10,12 +12,14 @@ import { LoginComponent } from '../LoginComponent/LoginComponent';
 
 export class DashboardComponent 
 {
-    public loginComponent: LoginComponent;
     private localStorage: LocalStorageService;
+    private authService: AuthService;
+    private router: Router;
 
-    constructor(localStorage: LocalStorageService, loginComponent: LoginComponent)
+    constructor(localStorage: LocalStorageService, authService: AuthService, router: Router)
     {
-        this.loginComponent = loginComponent;
+        this.router = router;
+        this.authService = authService;
         this.localStorage = localStorage;
     }
 
@@ -26,5 +30,13 @@ export class DashboardComponent
         if ("firstName" in user) {
         return user["firstName"];
         }
+    }
+
+    public logout(): void
+    {
+        this.authService.logout()
+            .subscribe((res) => {
+            this.router.navigate(['landing']);
+        });
     }
 }
