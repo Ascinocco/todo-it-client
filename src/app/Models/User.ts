@@ -33,30 +33,4 @@ export class User
     }
 
   }
-
-  /** Setters and Getters **/
-  public getEmail(): string
-  {
-    return this.email;
-  }
-
-  public setEmail(email: string): void
-  {
-    this.email = email;
-  }
-
-  /**
-   * We should only be able to grab the password within this class
-   * @return {string} [description]
-   */
-  private getPassword(): string
-  {
-    return this.password;
-  }
-
-  public setPassword(password: string): void
-  {
-    this.password = password;
-  }
-
 }
