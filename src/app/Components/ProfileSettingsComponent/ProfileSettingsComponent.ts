@@ -45,7 +45,7 @@ export class ProfileSettingsComponent
     public update(): void
     {
         let user = new User(this.email, this.password, this.firstName, this.lastName);
-        if (this.confirmPassword.length > 0) {
+        if (this.confirmPassword) {
             this.profileSettingsService.update(user, this.confirmPassword)
                 .subscribe((res) => {
                 if (res.success) {
