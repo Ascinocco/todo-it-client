@@ -72,6 +72,22 @@ export class AuthService
 
     }
 
+    public isUserLoggedIn(): boolean
+    {
+        if (this.localStorage.get('x-access-token')) {
+            return true;
+        }
+        return false;
+    }
+
+    public getUserFirstName(): string
+    {
+        let user = this.localStorage.get('user');
+        if ("firstName" in user) {
+            return user["firstName"];
+        }
+    }
+
     private storeUser(user: User): void
     {
         this.localStorage.set('user', user);

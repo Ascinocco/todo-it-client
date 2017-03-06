@@ -25,11 +25,7 @@ export class DashboardComponent
 
     public getUserFirstName(): string
     {
-        let user = this.localStorage.get('user');
-
-        if ("firstName" in user) {
-        return user["firstName"];
-        }
+        return this.authService.getUserFirstName();
     }
 
     public logout(): void

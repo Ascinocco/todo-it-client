@@ -86,19 +86,12 @@ export class LandingComponent
 
   public getUserFirstName(): string
   {
-    let user = this.localStorage.get('user');
-
-    if ("firstName" in user) {
-      return user["firstName"];
-    }
+    return this.authService.getUserFirstName();
   }
 
  public isUserLoggedIn(): boolean
  {
-   if (this.localStorage.get('x-access-token')) {
-     return true;
-   }
-   return false;
+   return this.authService.isUserLoggedIn();
  }
 
   private initForms(): void
