@@ -4,7 +4,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { LandingComponent } from './Components/LandingComponent/LandingComponent';
 import { AddTodoComponent } from './Components/TodoDashboard/AddTodoComponent/AddTodoComponent';
 import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboardComponent/TodoDashboardComponent';
-
+import { ProfileSettingsComponent } from './Components/ProfileSettingsComponent/ProfileSettingsComponent';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,8 @@ import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboard
   providers: [
       LandingComponent,
       TodoDashboardComponent,
-      AddTodoComponent
+      AddTodoComponent,
+      ProfileSettingsComponent
     ]
 })
 export class AppComponent

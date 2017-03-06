@@ -13,9 +13,12 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './Components/LandingComponent/LandingComponent';
 import { TodoDashboardComponent } from './Components/TodoDashboard/TodoDashboardComponent/TodoDashboardComponent';
 import { AddTodoComponent } from './Components/TodoDashboard/AddTodoComponent/AddTodoComponent';
+import { ProfileSettingsComponent } from './Components/ProfileSettingsComponent/ProfileSettingsComponent';
+
 // services
 import { AuthService } from './Services/AuthService';
 import { HttpService } from './Services/HttpService';
+import { ProfileSettingsService } from './Services/ProfileSettingsService';
 
 // middleware
 import { GuardMiddleware } from './Middleware/GuardMiddleware';
@@ -28,7 +31,8 @@ import { AppRoutes } from './Routes/AppRoutes';
     AppComponent,
     LandingComponent,
     TodoDashboardComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { AppRoutes } from './Routes/AppRoutes';
     GuardMiddleware,
     AuthService,
     HttpService,
+    ProfileSettingsService
   ],
   bootstrap: [AppComponent]
 })

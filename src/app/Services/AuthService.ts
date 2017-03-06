@@ -88,6 +88,11 @@ export class AuthService
         }
     }
 
+    public getUser(): Object
+    {
+        return this.localStorage.get('user');
+    }
+
     private storeUser(user: User): void
     {
         this.localStorage.set('user', user);
@@ -96,6 +101,11 @@ export class AuthService
     private removeUser(): void
     {
         this.localStorage.set('user', '');
+    }
+
+    public getToken(): string
+    {
+        return this.localStorage.get('x-access-token').toString();
     }
 
     private storeToken(headers: Headers): void
