@@ -97,7 +97,9 @@ export class ProfileSettingsComponent
 
     public logout(): void
     {
-        this.authService.logout();
-        this.router.navigate(['landing']);
+        this.authService.logout()
+            .subscribe((res) => {
+                this.router.navigate(['landing']);
+            });
     }
 }
