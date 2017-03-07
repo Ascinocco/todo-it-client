@@ -37,7 +37,5 @@ export class ProfileSettingsService
                     return res.json();
                 });
         }
-
-        
     }
 }
