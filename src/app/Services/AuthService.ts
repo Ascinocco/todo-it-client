@@ -34,12 +34,15 @@ export class AuthService
 
     public logout(): any
     {
+        console.log('logging out...')
         // using http service instead of http here, because http service automatically
         // attaches headers to request
         return this.httpService.post('http://localhost:3000/auth/logout', {})
                 .map((res) => {
+                    console.log('logged out on server?')
                     this.destoryToken();
                     this.removeUser();
+                    console.log('logged out on client??')
                     return res.json();
                 });
     }
@@ -95,12 +98,20 @@ export class AuthService
 
     private storeUser(user: User): void
     {
+        console.log('Storing user...');
+        console.log(user);
         this.localStorage.set('user', user);
+        console.log(this.localStorage.get('user'));
+        console.log('Has been stored')
     }
 
     private removeUser(): void
     {
+        console.log('Removing user');
+        console.log(this.localStorage.get('user'));
         this.localStorage.set('user', '');
+        console.log(this.localStorage.get('user'));
+        console.log('User has been removed');
     }
 
     public getToken(): string

@@ -1,4 +1,5 @@
 import { User } from '../../Models/User';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from '../../Services/AuthService';
 import { ProfileSettingsService } from '../../Services/ProfileSettingsService';
@@ -18,11 +19,13 @@ export class ProfileSettingsComponent
     public newPassword: string;
     public confirmPassword: string;
 
+    private router: Router;
     private authService: AuthService;
     private profileSettingsService: ProfileSettingsService;
     
-    constructor(authService: AuthService, profileSettingsService: ProfileSettingsService)
+    constructor(authService: AuthService, profileSettingsService: ProfileSettingsService, router: Router)
     {
+        this.router = router;
         this.authService = authService;
         this.profileSettingsService = profileSettingsService;
         this.initProfileForm();
@@ -66,5 +69,11 @@ export class ProfileSettingsComponent
                     }
                 });
         }
+    }
+
+    public logout(): void
+    {
+        this.authService.logout();
+        this.router.navigate(['landing']);
     }
 }
