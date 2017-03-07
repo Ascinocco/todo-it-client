@@ -29,7 +29,12 @@ export class ProfileSettingsService
                 .map((res) => {
                     // save updated user to local storage
                     let data = res.json();
-                    this.localStorage.set('user', data.user);
+
+                    // don't set a user updates if we're not succesful 
+                    if (data.success) {
+                        this.localStorage.set('user', data.user);
+                    }
+
                     return data;
                 });
         } else {
@@ -37,7 +42,12 @@ export class ProfileSettingsService
                 .map((res) => {
                     // save updated user to local storage
                     let data = res.json();
-                    this.localStorage.set('user', data.user);
+
+                    // don't set a user updates if we're not succesful 
+                    if (data.success) {
+                        this.localStorage.set('user', data.user);
+                    }
+
                     return data;
                 });
         }

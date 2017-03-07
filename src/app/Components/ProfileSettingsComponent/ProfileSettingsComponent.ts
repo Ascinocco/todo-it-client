@@ -53,6 +53,8 @@ export class ProfileSettingsComponent
 
     public update(): void
     {
+        this.updateErrors = []
+        this.updateMessages = [];
         let user = new User(this.email, this.password, this.firstName, this.lastName);
         if (this.password && this.confirmPassword && this.newPassword) {
             this.profileSettingsService.update(user, this.confirmPassword, this.newPassword)
@@ -69,7 +71,7 @@ export class ProfileSettingsComponent
                     this.password = "";
                     this.newPassword = "";
                     this.confirmPassword = "";
-                    this.updateMessages.push(res.msg);
+                    this.updateErrors.push(res.msg);
                 }
         });
         } else {
@@ -83,11 +85,11 @@ export class ProfileSettingsComponent
                         this.newPassword = "";
                         this.confirmPassword = "";
                         this.updateMessages.push(res.msg);
-                    } else {
+                    } else {       
                         this.password = "";
                         this.newPassword = "";
                         this.confirmPassword = "";
-                        this.updateMessages.push(res.msg);
+                        this.updateErrors.push(res.msg);
                     }
                 });
         }
