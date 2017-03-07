@@ -18,6 +18,8 @@ export class ProfileSettingsComponent
     public firstName: string;
     public newPassword: string;
     public confirmPassword: string;
+    public updateErrors: Array<string>;
+    public updateMessages: Array<string>;
 
     private router: Router;
     private authService: AuthService;
@@ -41,6 +43,8 @@ export class ProfileSettingsComponent
             this.firstName = user["firstName"];
             this.newPassword = "";
             this.confirmPassword = "";
+            this.updateErrors = [];
+            this.updateMessages = [];
         } catch (err) {
             console.error('Could not set Profile Form');
             console.error(err);
@@ -54,18 +58,36 @@ export class ProfileSettingsComponent
             this.profileSettingsService.update(user, this.confirmPassword, this.newPassword)
                 .subscribe((res) => {
                 if (res.success) {
-                // success actions
+                    this.firstName = res.user.firstName;
+                    this.lastName = res.user.lastName;
+                    this.email = res.user.email;
+                    this.password = "";
+                    this.newPassword = "";
+                    this.confirmPassword = "";
+                    this.updateMessages.push(res.msg);
                 } else {
-                // failure actions
+                    this.password = "";
+                    this.newPassword = "";
+                    this.confirmPassword = "";
+                    this.updateMessages.push(res.msg);
                 }
         });
         } else {
             this.profileSettingsService.update(user)
                 .subscribe((res) => {
                     if (res.success) {
-                        // success actions
+                         this.firstName = res.user.firstName;
+                        this.lastName = res.user.lastName;
+                        this.email = res.user.email;
+                        this.password = "";
+                        this.newPassword = "";
+                        this.confirmPassword = "";
+                        this.updateMessages.push(res.msg);
                     } else {
-                        // failure actions
+                        this.password = "";
+                        this.newPassword = "";
+                        this.confirmPassword = "";
+                        this.updateMessages.push(res.msg);
                     }
                 });
         }

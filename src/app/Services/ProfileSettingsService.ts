@@ -28,13 +28,17 @@ export class ProfileSettingsService
             return this.httpService.post('http://localhost:3000/user/update', { user: user , confirmPassword: confirmPassword, newPassword: newPassword})
                 .map((res) => {
                     // save updated user to local storage
-                    return res.json();
+                    let data = res.json();
+                    this.localStorage.set('user', data.user);
+                    return data;
                 });
         } else {
             return this.httpService.post('http://localhost:3000/user/update', { user: user })
                 .map((res) => {
                     // save updated user to local storage
-                    return res.json();
+                    let data = res.json();
+                    this.localStorage.set('user', data.user);
+                    return data;
                 });
         }
     }
